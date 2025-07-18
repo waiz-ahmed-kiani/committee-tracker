@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Total Committee Records</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="total-commette.html">Total Committee</a>
+  </div>
+
+  <div class="container">
+    <h1>Total Committee Payments</h1>
+
+    <label for="filterDate"><strong>Filter by Date:</strong></label>
+    <input type="date" id="filterDate" />
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Member</th>
+          <th>Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="recordTable"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const tableBody = document.getElementById("recordTable");
+    const filterDate = document.getElementById("filterDate");
+
+    let logs = JSON.parse(localStorage.getItem('commettePayments') || '[]');
+
+    function renderLogs(filteredLogs) {
+      tableBody.innerHTML = "";
+      filteredLogs.forEach((log, i) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${i + 1}</td>
+          <td>${log.member}</td>
+          <td>₹${log.amount}</td>
+          <td>${log.date}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    filterDate.addEventListener("change", () => {
+      const selected = new Date(filterDate.value).toLocaleDateString("en-IN");
+      const filtered = logs.filter(log => log.date === selected);
+      renderLogs(filtered);
+    });
+
+    renderLogs(logs);
+  </script>
+</body>
+</html>
