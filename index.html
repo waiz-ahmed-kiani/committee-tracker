@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Committee Tracker</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="total-commette.html">Total Committee</a>
+  </div>
+
+  <div class="container">
+    <h1>Daily Committee Tracker</h1>
+    <p>Each member must pay ₹1000 per day.</p>
+    <p><strong>Date:</strong> <span id="currentDate"></span></p>
+
+    <h2>Mark Members as Paid</h2>
+    <div id="members" class="member-buttons"></div>
+
+    <h2>Balance Summary</h2>
+    <table>
+      <thead>
+        <tr><th>Member</th><th>Balance (₹)</th><th>Action</th></tr>
+      </thead>
+      <tbody id="balanceTable"></tbody>
+    </table>
+  </div>
+
+  <!-- Modal code remains the same... -->
+
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h3>Clear Payment</h3>
+      <p><strong>Member:</strong> <span id="modalMember"></span></p>
+      <p>Pending Balance: ₹<span id="modalBalance"></span></p>
+      <input type="number" id="payAmount" placeholder="Amount to pay"/>
+      <button id="confirmPay">Confirm Payment</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
